@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  web:
+    image: webdevops/php-apache:7.3
+    container_name: php-apache-container
+    volumes:
+      - ./:/app
+    ports:
+      - "8089:80"
+    depends_on: 
+      - db
+    networks:
+      - casa
+    
+  db:
+    image: postgres:12.6
+    container_name: postgres-container
+    environment: 
+      - POSTGRES_DB=BDcake
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./db-data:/data/postgres
+    ports:
+      - "5432:5432"
+  
+      
+    networks: 
+      - casa
+
+
+
+networks: 
+  casa:
+    driver: bridge
