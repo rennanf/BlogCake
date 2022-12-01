@@ -6,13 +6,12 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add'); // Permitindo que os usuários se registrem
+		$this->Auth->allow('add', 'logout'); // Permitindo que os usuários se registrem
 	}
 
 	public function login() {
 		if ($this->Auth->login()) {
-			echo ˜sadadd˜;
-			$this->redirect($this->Auth->redirect());
+			$this->redirect($this->Auth->redirect('/posts'));
 		} else {
 			$this->Flash->error(__('Invalid username or password, try again'));
 		}
