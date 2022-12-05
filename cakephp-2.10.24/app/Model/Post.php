@@ -1,9 +1,6 @@
 <?php
 
-class Post extends AppModel
-{
-	public $name = 'Post';
-
+class Post extends AppModel {
 	public $validate = array(
 		'title' => array(
 			'rule' => 'notBlank'
@@ -12,11 +9,8 @@ class Post extends AppModel
 			'rule' => 'notBlank'
 		)
 	);
-	// app/Model/Post.php
-
 	public function isOwnedBy($post, $user) {
-		return $this->field('id', array('id' => $post, 'user_id' => $user)) === $post;
+		return $this->field('id', array('id' => $post, 'user_id' => $user)) !== false;
 	}
+
 }
-
-
