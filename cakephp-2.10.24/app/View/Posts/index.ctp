@@ -7,7 +7,7 @@
 		<th>Title</th>
 		<th>Actions</th>
 		<th>Edit</th>
-		<th>Created</th>
+		<th>Data de Criação</th>
 	</tr>
 
 	<!-- Here's where we loop through our $posts array, printing out post info -->
