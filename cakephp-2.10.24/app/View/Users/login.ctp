@@ -31,7 +31,7 @@
 						<small>Novo no blog?</small>
 						<hr class="right">
 					</div>
-					<p class="form-group"><a href="#" class="btn btn-info btn-block">Crie sua conta</a></p>
+					<p class="form-group"><a href="/users/add" class="btn btn-info btn-block">Crie sua conta</a></p>
 					<p class="form-group">© 2022 Rennan Fabrício. Todos os direitos reservados.</a>.</p>
 				</form>
 			</div>
