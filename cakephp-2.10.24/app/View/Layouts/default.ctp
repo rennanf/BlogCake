@@ -3,22 +3,26 @@
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
+<style> .scale-up-center {
+		-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+		animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	}</style>
 <html>
 
-<head>
+<head class="scale-up-center">
 
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+//		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('cake.generic');  //interessante
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+//		echo $this->fetch('meta');
+//		echo $this->fetch('css');
+//		echo $this->fetch('script');
 	?>
 </head>
 <body>
@@ -28,7 +32,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		</div>
 		<div id="content">
 
-			<?php echo $this->Flash->render(); ?>
+<!--			--><?php //echo $this->Flash->render(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
@@ -47,3 +51,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 </body>
 </html>
+
+
+
+
+
+
+
+
