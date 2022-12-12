@@ -49,11 +49,13 @@
 			</ul><br>
 			<div class="input-group">
 <!--				<input type="text" class="form-control" placeholder="Search Blog..">-->
-				<h4>Filtrar por nome</h4>
+				<h4>Filtrar por título</h4>
 				<input class="form-control" id="myInput" type="text" placeholder="Search..">
+				<h4>Filtrar por data</h4>
+				<input id="date" type="date" placeholder="Search..">
 
 
-					<script>
+				<script>
 						$(document).ready(function(){
 						$("#myInput").on("keyup", function() {
 							var value = $(this).val().toLowerCase();
