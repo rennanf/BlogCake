@@ -19,7 +19,7 @@ class PostsController extends AppController {
 	}
 	public function add() {
 		if ($this->request->is('post')) {
-			//Added this line
+
 			$this->request->data['Post']['user_id'] = $this->Auth->user('id');
 			if ($this->Post->save($this->request->data)) {
 				$this->Flash->success(__('Your post has been saved.'));
@@ -86,5 +86,4 @@ class PostsController extends AppController {
 		return parent::isAuthorized($user);
 	}
 }
-
 

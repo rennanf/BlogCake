@@ -49,12 +49,65 @@
 			</ul><br>
 			<div class="input-group">
 <!--				<input type="text" class="form-control" placeholder="Search Blog..">-->
-				<h4>Filtrar por título</h4>
-				<input class="form-control" id="myInput" type="text" placeholder="Search..">
-				<h4>Filtrar por data</h4>
-				<input id="date" type="date" placeholder="Search..">
+				<h4 style="margin-left: 8px">Filtrar por título</h4>
+				<input class="form-control" id="myInput" type="text" placeholder="Search.." style="margin-left: 8px">
+				<br><br>
+				<h4 style="margin-left: 8px">Filtrar por data</h4>
+
+				<form action="" method="GET">
+					<div class="row">
+						<div>
+							<div class="form-group">
+								<label>Data inicial -</label>
+								<input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control">
+								<label>Data final</label>
+								<input type="date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" class="form-control">
+
+							</div>
+							<br><br><br>
+							<div>
+<!--								<script> $query = "SELECT * from posts WHERE data between  'from_date' and 'to_date';"</script>-->
+								<button type="submit" class="btn btn-primary" style="margin-left: 8px">Filtrar</button>
+
+							</div>
+
+							<?php
+                                $con = pg_connect("host=postgres-container port=5432 dbname=BDcake user=postgres password=postgres");
+
+                                if(isset($_GET['from_date']) && isset($_GET['to_date']))
+                                {
+                                    $from_date = $_GET['from_date'];
+                                    $to_date = $_GET['to_date'];
+
+                                    $query = "SELECT * FROM users WHERE created BETWEEN '$from_date' AND '$to_date' ";
+                                    $query_run = pg_query($con, $query);
+
+									if(pg_num_rows($query_run) > 0)
+									{
+										foreach($query_run as $row)
+										{
+											?>
+											<tr>
+<!--												<td>--><?//= $row['id']; ?><!--</td>-->
+<!--												<td>--><?//= $row['title']; ?><!--</td>-->
+												<td><?= $row['created']; ?></td>
+											</tr>
+											<?php
+										}
+									}
+									else
+									{
+										echo "No Record Found";
+									}
+								}
+							?>
 
 
+
+
+						</div>
+					</div>
+				</form>
 				<script>
 						$(document).ready(function(){
 						$("#myInput").on("keyup", function() {
@@ -65,12 +118,14 @@
 						});
 					});
 				</script>
-				<br><br><br><br>
-				<span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
+				<br>
+
+
+<!--				<span class="input-group-btn">-->
+<!--          <button class="btn btn-default" type="button">-->
+<!--            <span class="glyphicon glyphicon-search"></span>-->
+<!--          </button>-->
+<!--        </span>-->
 			</div>
 		</div>
 
@@ -162,7 +217,6 @@
 <footer class="container-fluid">
 	<p>2022 Rennan Fabrício  - Todos os direitos reservados.</p>
 </footer>
-
 
 </body>
 </html>
