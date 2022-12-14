@@ -19,11 +19,11 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
- 
+
 /**
  * Here, we are connecting '/' (base path) to controller called 'Pages',
  * its action called 'display', and we pass a param to select the view file
- * to use (in this case, /app/View/Pages/home.ctp)...
+ * to use (in this case, /app/View/Pages/posts.ctp)...
  */
 	Router::connect('/', array('controller' => 'posts', 'action' => 'index'));
 /**

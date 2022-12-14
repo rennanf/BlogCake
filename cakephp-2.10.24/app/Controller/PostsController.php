@@ -13,9 +13,6 @@ class PostsController extends AppController
 
 
 		if (!empty($data_ini) && !empty($data_fim) ) {
-//			$from_date = $_POST['from_date'];
-//			$to_date = $_POST['to_date'];
-
 
 			$query = "SELECT * FROM posts WHERE created BETWEEN '$data_ini' AND '$data_fim' ";
 			$result = $this->Post->query($query);

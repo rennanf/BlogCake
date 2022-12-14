@@ -1052,14 +1052,14 @@ class RouterTest extends CakeTestCase {
 
 		Router::reload();
 		require CAKE . 'Config' . DS . 'routes.php';
-		$result = Router::parse('/pages/display/home');
+		$result = Router::parse('/posts');
 		$expected = array('plugin' => null, 'pass' => array('home'), 'controller' => 'pages', 'action' => 'display', 'named' => array());
 		$this->assertEquals($expected, $result);
 
-		$result = Router::parse('pages/display/home/');
+		$result = Router::parse('/posts');
 		$this->assertEquals($expected, $result);
 
-		$result = Router::parse('pages/display/home');
+		$result = Router::parse('/posts');
 		$this->assertEquals($expected, $result);
 
 		Router::reload();
