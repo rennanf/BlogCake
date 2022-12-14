@@ -1,11 +1,35 @@
 <?php
 
-class PostsController extends AppController {
+class PostsController extends AppController
+{
 	public $helpers = array('Html', 'Form');
 
-	public function index() {
-		$this->set('posts', $this->Post->find('all'));
+	public function index()
+	{
+
+
+		$data_ini = $this->request->data('from_date');
+		$data_fim = $this->request->data('to_date');
+
+
+		if (!empty($data_ini) && !empty($data_fim) ) {
+//			$from_date = $_POST['from_date'];
+//			$to_date = $_POST['to_date'];
+
+
+			$query = "SELECT * FROM posts WHERE created BETWEEN '$data_ini' AND '$data_fim' ";
+			$result = $this->Post->query($query);
+			$this->set('posts', $result);
+		} else {
+
+			$query2 = "SELECT * FROM posts";
+			$this->set('posts', $this->Post->query($query2));
+
+		}
 	}
+
+
+
 	public function view($id = null) {
 		if (!$id) {
 			throw new NotFoundException(__('Invalid post'));
@@ -85,5 +109,11 @@ class PostsController extends AppController {
 
 		return parent::isAuthorized($user);
 	}
-}
+
+	public function filter(){
+
+
+
+
+}}
 

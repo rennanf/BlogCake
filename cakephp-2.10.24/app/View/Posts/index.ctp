@@ -54,55 +54,21 @@
 				<br><br>
 				<h4 style="margin-left: 8px">Filtrar por data</h4>
 
-				<form action="" method="GET">
+				<form action="" method="POST">
 					<div class="row">
 						<div>
 							<div class="form-group">
 								<label>Data inicial -</label>
-								<input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date']; } ?>" class="form-control">
+
+								<input type="date" name="from_date" value="<?php if(isset($_POST['from_date'])){ echo $_POST['from_date']; } ?>" class="form-control">
 								<label>Data final</label>
-								<input type="date" name="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date']; } ?>" class="form-control">
+								<input type="date" name="to_date" value="<?php if(isset($_POST['to_date'])){ echo $_POST['to_date']; } ?>" class="form-control">
 
 							</div>
 							<br><br><br>
 							<div>
-<!--								<script> $query = "SELECT * from posts WHERE data between  'from_date' and 'to_date';"</script>-->
-								<button type="submit" class="btn btn-primary" style="margin-left: 8px">Filtrar</button>
-
+								<button type="submit" class="btn btn-primary" style="margin-left: 8px">filtrar</button>
 							</div>
-
-							<?php
-                                $con = pg_connect("host=postgres-container port=5432 dbname=BDcake user=postgres password=postgres");
-
-                                if(isset($_GET['from_date']) && isset($_GET['to_date']))
-                                {
-                                    $from_date = $_GET['from_date'];
-                                    $to_date = $_GET['to_date'];
-
-                                    $query = "SELECT * FROM users WHERE created BETWEEN '$from_date' AND '$to_date' ";
-                                    $query_run = pg_query($con, $query);
-
-									if(pg_num_rows($query_run) > 0)
-									{
-										foreach($query_run as $row)
-										{
-											?>
-											<tr>
-<!--												<td>--><?//= $row['id']; ?><!--</td>-->
-<!--												<td>--><?//= $row['title']; ?><!--</td>-->
-												<td><?= $row['created']; ?></td>
-											</tr>
-											<?php
-										}
-									}
-									else
-									{
-										echo "No Record Found";
-									}
-								}
-							?>
-
-
 
 
 						</div>
@@ -139,32 +105,35 @@
 			<hr>
 			<li><h2><?php
 				echo $this->Html->link(
-						$post['Post']['title'],
-						array('action' => 'view', $post['Post']['id'])
+						$post[0]['title'],
+						array('action' => 'view', $post[0]['id'])
 				);
 				?></h2>
 			<h5><span class="glyphicon glyphicon-time"></span>
-				<?php echo $post['Post']['id']; ?>
-				<?php echo $post['Post']['created']; ?>
+
+				<?php $date =  $post[0]['created'];
+				$date = str_replace('-', '/', $date);
+				echo date('d / m / Y', strtotime($date));
+				?>
 				<?php
 				echo $this->Html->link(
-						'Edit', array('action' => 'edit', $post['Post']['id'])
+						'Edit', array('action' => 'edit', $post[0]['id'])
 				);
 				?>
 				<?php
 				echo $this->Form->postLink(
 						'Delete',
-						array('action' => 'delete', $post['Post']['id']),
+						array('action' => 'delete', $post[0]['id']),
 						array('confirm' => 'Are you sure?')
 				);
 				?>
 
 			</h5>
 
-			<h5><span class="label label-danger">Cake</span> <span class="label label-primary">Postagem</span></h5><br>
+			<h5> ID : <?php echo $post[0]['id']; ?> <span class="label label-danger">Cake</span> <span class="label label-primary">Postagem</span></h5><br>
 				</td>
 			</tr>
-				<p><?php echo h($post['Post']['body']); ?></p></p>
+				<p><?php echo h($post[0]['body']); ?></p></p>
 			</li>
 			<?php endforeach; ?>
 			</div>
