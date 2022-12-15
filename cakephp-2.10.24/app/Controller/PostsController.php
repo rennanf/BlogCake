@@ -10,20 +10,40 @@ class PostsController extends AppController
 
 		$data_ini = $this->request->data('from_date');
 		$data_fim = $this->request->data('to_date');
+		$title = $this->request->data('title');
+
+		 json_encode($this->Session->write('title' ,  $title  ));
 
 
-		if (!empty($data_ini) && !empty($data_fim)) {
+
+
+        if ( empty($title) && (empty($data_ini) && empty($data_fim))) {
+			$query2 = "SELECT * FROM posts";
+			$this->set('posts', $this->Post->query($query2));
+		}else if ((!empty($title)) && ((!empty($data_ini) && (!empty($data_fim))))){
+
+			$query4 = "SELECT * FROM posts WHERE title ILIKE  '%$title%' AND created BETWEEN  '$data_ini' AND '$data_fim' ORDER BY title";
+			$result = $this->Post->query($query4);
+			$this->set('posts', $result);
+
+		} else if (!empty($title)) {
+
+			$query3 = "SELECT * FROM posts WHERE title ILIKE '%$title%' ORDER BY title ";
+			$result = $this->Post->query($query3);
+			$this->set('posts', $result);
+		} else if (!empty($data_ini) && !empty($data_fim)) {
 
 			$query = "SELECT * FROM posts WHERE created BETWEEN '$data_ini' AND '$data_fim' ";
 			$result = $this->Post->query($query);
 			$this->set('posts', $result);
-		} else {
+		}
 
-			$query2 = "SELECT * FROM posts";
-			$this->set('posts', $this->Post->query($query2));
 
 		}
-	}
+
+
+
+
 
 
 	public function view($id = null)

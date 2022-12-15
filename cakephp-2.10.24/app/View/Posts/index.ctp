@@ -54,11 +54,13 @@
 			<div class="input-group">
 <!--				<input type="text" class="form-control" placeholder="Search Blog..">-->
 				<h4 style="margin-left: 8px">Filtrar por título</h4>
-				<input class="form-control" id="myInput" type="text" placeholder="Search.." style="margin-left: 8px">
+<!--				<input class="form-control" id="myInput" type="text" placeholder="Search.." style="margin-left: 8px">-->
+				<form action="" method="POST">
+				<input type="text" name="title" value="<?php if(isset($_POST['title'])){ echo $_POST['title']; } ?>" class="form-control">
 				<br><br>
 				<h4 style="margin-left: 8px">Filtrar por data</h4>
 
-				<form action="" method="POST">
+
 					<div class="row">
 						<div>
 							<div class="form-group">
