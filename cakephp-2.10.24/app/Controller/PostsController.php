@@ -12,7 +12,7 @@ class PostsController extends AppController
 		$data_fim = $this->request->data('to_date');
 
 
-		if (!empty($data_ini) && !empty($data_fim) ) {
+		if (!empty($data_ini) && !empty($data_fim)) {
 
 			$query = "SELECT * FROM posts WHERE created BETWEEN '$data_ini' AND '$data_fim' ";
 			$result = $this->Post->query($query);
@@ -26,8 +26,8 @@ class PostsController extends AppController
 	}
 
 
-
-	public function view($id = null) {
+	public function view($id = null)
+	{
 		if (!$id) {
 			throw new NotFoundException(__('Invalid post'));
 		}
@@ -38,7 +38,9 @@ class PostsController extends AppController
 		}
 		$this->set('post', $post);
 	}
-	public function add() {
+
+	public function add()
+	{
 		if ($this->request->is('post')) {
 
 			$this->request->data['Post']['user_id'] = $this->Auth->user('id');
@@ -49,7 +51,8 @@ class PostsController extends AppController
 		}
 	}
 
-	public function edit($id = null) {
+	public function edit($id = null)
+	{
 		if (!$id) {
 			throw new NotFoundException(__('Invalid post'));
 		}
@@ -73,7 +76,8 @@ class PostsController extends AppController
 		}
 	}
 
-	public function delete($id) {
+	public function delete($id)
+	{
 		if ($this->request->is('get')) {
 			throw new MethodNotAllowedException();
 		}
@@ -90,7 +94,9 @@ class PostsController extends AppController
 
 		return $this->redirect(array('action' => 'index'));
 	}
-	public function isAuthorized($user) {
+
+	public function isAuthorized($user)
+	{
 		// All registered users can add posts
 		if ($this->action === 'add') {
 			return true;
@@ -98,7 +104,7 @@ class PostsController extends AppController
 
 		// The owner of a post can edit and delete it
 		if (in_array($this->action, array('edit', 'delete'))) {
-			$postId = (int) $this->request->params['pass'][0];
+			$postId = (int)$this->request->params['pass'][0];
 			if ($this->Post->isOwnedBy($postId, $user['id'])) {
 				return true;
 			}
@@ -107,10 +113,4 @@ class PostsController extends AppController
 		return parent::isAuthorized($user);
 	}
 
-	public function filter(){
-
-
-
-
-}}
-
+}
