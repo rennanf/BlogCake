@@ -37,12 +37,17 @@ class UsersController extends AppController {
 		$this->set('user', $this->User->findById($id));
 	}
 
-	public function add() {
+	// public $layout = 'sidebar';
+
+	public function add()
+	{
+		// $this->layout = 'default';
+		
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'login'));
 			}
 			$this->Flash->error(
 				__('The user could not be saved. Please, try again.')

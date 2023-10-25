@@ -10,6 +10,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <html>
 
 <head class="scale-up-center">
+<?php include('topbar.ctp'); ?>
+        <?php include('sidebar.ctp'); ?>
+
 
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -18,7 +21,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 //		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');  
+		// echo $this->Html->css('cake.generic');  
 		// echo $this->Html->css('styles');  //interessante
 
 //		echo $this->fetch('meta');
@@ -29,12 +32,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
 	<div id="container">
 		<div id="header">
+       
 <!--			<h1>--><?php //echo $this->Html->link($cakeDescription, 'https://cakephp.org'); ?><!--</h1>-->
 		</div>
 		<div id="content">
 
 <!--			--><?php //echo $this->Flash->render(); ?>
-<?php include('sidebar.ctp'); ?>
+
+
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">

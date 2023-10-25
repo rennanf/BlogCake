@@ -49,7 +49,8 @@
 				<li class="active"><a href="#section1">Postagens</a></li>
 				<li><a href="#section2">Perfil</a></li>
 				<li><a href="#section3">Configurações</a></li>
-				<li><a href="users/logout">Logout</a></li>
+				<li><?= $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
+
 			</ul><br>
 			<div class="input-group">
 <!--				<input type="text" class="form-control" placeholder="Search Blog..">-->

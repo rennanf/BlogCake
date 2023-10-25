@@ -6,7 +6,8 @@ class PostsController extends AppController
 
 	public function index()
 	{
-
+		
+		$this->layout = 'sidebar_top';
 
 		$data_ini = $this->request->data('from_date');
 		$data_fim = $this->request->data('to_date');
@@ -39,6 +40,9 @@ class PostsController extends AppController
 		}
 
 
+		}
+		public function telabranca(){
+			$this->layout = 'sidebar_top';
 		}
 
 

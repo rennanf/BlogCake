@@ -1,4 +1,4 @@
-
+<?php include('layouts/sidebar.ctp'); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -8,8 +8,10 @@
 		var myModal = new bootstrap.Modal(staticBackdrop);
 		myModal.show();
 	});</script>
+	
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div >
+	
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -24,7 +26,11 @@
 				echo $this->Form->input('body', array('rows' => '3'));
 				echo $this->Form->end('Save Post');
 				?>
+
+				
 			</div>
+
+			
 			<div class="modal-footer">
 <!--				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
 <!--				<button type="button" class="btn btn-primary">Understood</button>-->

@@ -38,6 +38,7 @@
 					<p class="form-group"><a href="/users/login" class="btn btn-info btn-block">Voltar</a></p>
 					<p class="form-group">© 2022 Rennan Fabrício. Todos os direitos reservados.</a>.</p>
 				</form>
+				
 			</div>
 		</div>
 	</div>

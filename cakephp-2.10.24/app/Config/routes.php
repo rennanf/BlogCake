@@ -30,6 +30,7 @@
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 Router::connect('/', array('controller' => 'posts', 'action' => 'index'));
+Router::connect('/', array('controller' => 'TesteController', 'action' => 'index'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
